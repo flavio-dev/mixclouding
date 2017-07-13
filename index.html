@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="McslApp" data-framework="angularjs">
+<head>
+	<title>Mixclouding - Build your set list thanks to Mixcloud</title>
+	<style>[ng-cloak] { display: none; }</style>
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<header>
+		<div class="header__mixcloud">
+			<img class="header__mixcloud__svg" src="svg/mixcloud-logo.svg" />
+			<span>mixclouding</span>
+		</div>
+		<div class="header__github">SVG github</div>
+	</header>
+	<div class="outside-container">
+		<div class="container" ng-controller="McslCtrl">
+			<div class="right-side">
+				<section id="mcslsearch">
+					<form class="search__form" ng-submit="performSearch()">
+						<input type="text" placeholder="Search For A Style Of Music" ng-model="search" value="" name="search" id="search_text" class="{{searchClass}}">
+						<button class="icon" id="search"></button>
+					</form>
+					<div class="current-mixcloud" ng-cloak>
+						<h2>Current Mixcloud Playing</h2>
+						<img ng-view class="box-shadow" src="{{coverUrl}}" alt="Cover Of The In Play Cloudcast" class="slide-reveal" />
+						<div class="current-mixcloud__user-info {{userClass}}" ng-cloak>
+							Cloudcast by <a href="{{userUrl}}" target="_blank">{{userName}}</a>.
+						</div>
+					</div>
+					<div>
+						<button id="export_tracks" class="{{exportClass}}" ng-click="exportListOfTracks()">Export List Of Tracks</button>
+					</div>
+				</section>
+			</div>
+
+			<div class="left-side">
+				<section id="mcslapp">
+					<div class="mixcloud-player box-shadow" ng-cloak ng-bind-html="mixcloudPlayer"></div>
+					<br/>
+					<div class="separator"></div>
+					<div class="mixcloud_setlist_wrapper">
+						<form id="add_form" ng-submit="addTrack()">
+							<input type="text" placeholder="Artist" ng-model="newArtist" class="artist">
+							<span>&sim;</span>
+							<input type="text" placeholder="Title" ng-model="newTitle" class="title">
+							<button class="icon" id="add_to_list"></button>
+							<div class="icon" id="add_to_list_hover"></div>
+						</form>
+					</div>
+					<div class="separator"></div>
+					<h2 ng-cloak>Your Setlist So Far ({{tracks.length}} Tracks)</h2>
+					<section id="list_track_section" ng-show="tracks.length" ng-cloak>
+						<ul id="list_track">
+							<li class="mixcloud_setlist_wrapper" ng-repeat="track in tracks" class="slide-reveal">
+								<input type="text" value="{{track.artist}}" name="artist" class="artist">
+								<span>&sim;</span>
+								<input type="text" value="{{track.title}}" name="title" class="title">
+								<button class="icon del_to_list" ng-click="removeTrack(track)"></button>
+								<div class="icon del_to_list_hover"></div>
+							</li>
+						</ul>
+					</section>
+				</section>
+			</div>
+		</div>
+
+	</div>
+	<footer>
+		<script src="js/jquery-2-0-3.min.js"></script>
+		<script src="js/angular-1-2-0.min.js"></script>
+		<script src="js/angular-animate-1-2-0.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/services/setlistStorage.js"></script>
+		<script src="js/controllers/controller.js"></script>
+	</footer>
+</body>
+</html>

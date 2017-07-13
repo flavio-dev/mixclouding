@@ -1,0 +1,290 @@
+header {
+	align-items: center;
+	background-color: #777777;
+	color: #FFFFFF;
+	display: flex;
+	height: 40px;
+	justify-content: space-between;
+	padding: 0 15px;
+}
+
+.header__mixcloud {
+	align-items: center;
+	display: flex;
+}
+
+.header__mixcloud span {
+	margin-left: 10px;
+}
+
+.header__mixcloud__svg {
+	height: 40px;
+	width: 40px;
+}
+
+.header__github {
+
+}
+
+.outside-container {
+	max-width: 1340px;
+	margin: 0 auto;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	padding:15px;
+}
+
+.right-side {
+	margin-bottom: 40px;
+}
+
+.search__form {
+	display: flex;
+}
+
+.search__form input[type=text] {
+	padding-right: 30px;
+	width: 100%;
+}
+
+.search__form input[type=text].no_result {
+	border: 1px solid #FC3232;
+}
+
+.search__form .icon {
+	right:8px;
+	top: 8px;
+}
+
+.current-mixcloud {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.current-mixcloud__user-info {
+	text-align: center;
+	padding-top:13px;
+}
+
+.mixcloud-player {
+	border: 3px #777777 solid;
+	height: 120px;
+	width: 100%;
+}
+
+.artist {
+	width: 301px;
+}
+
+.title {
+	width: 260px;
+	padding-right: 30px;
+}
+
+.mixcloud_setlist_wrapper {
+	position:relative;
+}
+
+#add_to_list {
+	top: 168px;
+	background-image:url('../images/plus.png');
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	filter:alpha(opacity=100);
+	transition: opacity 0.60s ease-in-out;
+	-moz-transition: opacity 0.60s ease-in-out;
+	-webkit-transition: opacity 0.60s ease-in-out;
+	z-index:10;
+}
+
+#add_to_list:hover {
+	opacity: 0;
+}
+
+#add_to_list_hover {
+	width: 20px;
+	height: 20px;
+	background-image:url('../images/plus-hover.png');
+	top: 168px;
+}
+
+.del_to_list {
+	background-image:url('../images/less.png');
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	filter:alpha(opacity=100);
+	transition: opacity 0.60s ease-in-out;
+	-moz-transition: opacity 0.60s ease-in-out;
+	-webkit-transition: opacity 0.60s ease-in-out;
+	z-index:10;
+}
+
+.del_to_list:hover {
+	opacity: 0;
+}
+
+.del_to_list_hover {
+	width: 20px;
+	height: 20px;
+	background-image:url('../images/less-hover.png');
+}
+
+
+* {
+	/*font-family: 'Lobster';*/
+}
+input[type=text] {
+	padding: 0 7px;
+	font-size: 20px;
+	height:35px;
+	border: 1px solid #EEEEEE;
+}
+
+.separator {
+	border-bottom: 1px dotted #ccc;
+	text-align:center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.icon {
+	position: absolute;
+	right:6px;
+	top: 9px;
+}
+
+/*#search {
+	background-image:url('../images/search-icon.png');
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	filter:alpha(opacity=100);
+	transition: opacity 0.60s ease-in-out;
+	-moz-transition: opacity 0.60s ease-in-out;
+	-webkit-transition: opacity 0.60s ease-in-out;
+	z-index:10;
+}
+
+#search:hover {
+	opacity: 0;
+}
+
+#search_hover {
+	width: 20px;
+	height: 20px;
+	background-image:url('../images/search-icon-hover.png');
+}*/
+
+.box-shadow {
+	box-shadow: 7px 7px 10px #888888;
+}
+
+h1 {
+	font-size: 30px;
+	text-align: center;
+}
+
+h2 {
+	font-size: 24px;
+}
+
+button {
+	border:0px;
+}
+
+ul {
+	padding: 0 0 0 0;
+}
+
+li {
+	list-style: none;
+	padding-bottom: 8px;
+}
+
+a {
+	color: #999;
+}
+
+a:link{
+	text-decoration:none;
+}
+
+a:hover{
+	text-decoration:underline;
+}
+
+.displaynone {
+	display: none;
+}
+
+/*@font-face {
+	font-family:'Lobster';
+	font-style:normal;
+	font-weight:400;
+	src:local('Lobster'), url(http://themes.googleusercontent.com/static/fonts/lobster/v5/TSDaXhyJuDJ-NBU0popSWA.ttf) format('truetype')
+}*/
+
+/*.animate-enter {
+  -webkit-transition:1.5s linear all;
+  -moz-transition:1.5s linear all;
+  -o-transition:1.5s linear all;
+  transition:1.5s linear all;
+
+  position:relative;
+  opacity:0;
+  top:10px;
+}
+
+.animate-enter.animate-enter-active {
+  top:0;
+  opacity:1;
+}*/
+
+
+.slide-reveal {
+	-webkit-transition:0.5s linear all;
+	-moz-transition:0.5s linear all;
+	-o-transition:0.5s linear all;
+	transition:0.5s linear all;
+}
+
+.slide-reveal.ng-enter {
+	opacity:0;
+}
+
+.slide-reveal.ng-enter.ng-enter-active {
+	opacity:1;
+}
+
+.slide-reveal.ng-leave {
+	opacity:1;
+}
+
+.slide-reveal.ng-leave-active {
+	opacity:0;
+}
+
+
+@media (min-width: 950px) {
+	.wrapper {
+		flex-direction: row;
+	}
+
+	.right-side {
+		margin-left: 30px;
+		order: 1;
+		width: 320px;
+	}
+
+	.left-side {
+		order: 0;
+		width: 100%;
+	}
+}
