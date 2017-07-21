@@ -31,3 +31,6 @@ yarn-error.log*
 
 node_modules/
 build/
+.editorconfig
+.eslintignore
+.eslintrc.json
