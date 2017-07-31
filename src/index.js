@@ -41,12 +41,9 @@ if (window.devToolsExtension) {
 const MOUNT_NODE = document.getElementById('root')
 
 let render = () => {
-  const routes = require('./routes/index').default(store)
-
   ReactDOM.render(
     <Root
       store={store}
-      routes={routes}
     />,
     MOUNT_NODE
   )

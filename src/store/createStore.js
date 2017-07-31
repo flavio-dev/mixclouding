@@ -1,6 +1,5 @@
 import Immutable from 'immutable'
-import { routerMiddleware } from 'react-router-redux'
-import { applyMiddleware, createStore } from 'redux'
+import { applyMiddleware, createStore, compose } from 'redux'
 import { makeRootReducer } from './reducers'
 import { rootSaga, sagaMiddleware } from './sagas'
 
@@ -8,15 +7,18 @@ export default (initialState = Immutable.Map(), history) => {
   // ======================================================
   // Middleware Configuration
   // ======================================================
-  const middleware = [sagaMiddleware, routerMiddleware(history)]
+  const middleware = [sagaMiddleware]
 
   // ======================================================
   // Store Instantiation and HMR Setup
   // ======================================================
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
   const store = createStore(
     makeRootReducer(),
     initialState,
-    applyMiddleware(...middleware)
+    composeEnhancers(
+      applyMiddleware(...middleware)
+    )
   )
   store.asyncReducers = {}
 

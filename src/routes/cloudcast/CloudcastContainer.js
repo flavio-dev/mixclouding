@@ -1,13 +1,16 @@
 import { connect } from 'react-redux'
 
 import Cloudcast from './Cloudcast'
+import { setCloudcastId } from './actions'
 
-// const mapActionCreators = {
-//
-// }
-
-const mapStateToProps = (state) => ({
-  whole: state
+const mapActionCreators = (dispatch) => ({
+  setCloudcastId: (ccId) => {
+    dispatch(setCloudcastId(ccId))
+  }
 })
 
-export default connect(mapStateToProps)(Cloudcast)
+const mapStateToProps = (state) => ({
+  test: 'testcdscjos'
+})
+
+export default connect(mapStateToProps, mapActionCreators)(Cloudcast)

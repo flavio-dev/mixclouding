@@ -1,13 +1,10 @@
 import createStore from './createStore'
-import injectReducer from './reducers'
-import injectSaga from './sagas'
-import { getApp, getPathname } from './selectors'
-
-export {
-  injectReducer,
-  injectSaga,
-  getApp,
-  getPathname
-}
+// import injectReducer from './reducers'
+// import injectSaga from './sagas'
+//
+// export {
+//   injectReducer,
+//   injectSaga
+// }
 
 export default createStore

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// import PropTypes from 'prop-types'
 import logo from './logo.svg'
 import styles from './App.css'
 
@@ -8,7 +9,7 @@ class App extends Component {
       <div className={styles.App}>
         <div className={styles.AppHeader}>
           <img src={logo} className={styles.AppLogo} alt='logo' />
-          <h2>Welcome to React</h2>
+          <h2>Welcome to React cdfc</h2>
         </div>
         <p className={styles.AppIntro}>
           To get started, edit <code>src/App.js</code> and save to reload.
