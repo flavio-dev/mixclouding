@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-export const Cloudcast = ({ match, test, setCloudcastId }) => {
-  return <div onClick={() => setCloudcastId(match.params.cloudcastId)}>hello {match.params.cloudcastId} {test}</div>
+class Cloudcast extends Component {
+  componentWillMount() {
+    this.props.setCloudcastId(this.props.match.params.cloudcastId)
+  }
+
+  render() {
+    return <div>hello {this.props.match.params.cloudcastId} {this.props.test}</div>
+  }
 }
 
 Cloudcast.propTypes = {
