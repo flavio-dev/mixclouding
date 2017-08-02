@@ -1,7 +1,7 @@
-import { SET_CLOUDCAST_ID } from './actions'
+import { SET_CLOUDCAST_ID } from '../actions'
 
 const initialState = ''
-export const cloudcastReducer = (state = initialState, action) => {
+export const cloudcastIdReducer = (state = initialState, action) => {
   console.log('in cloudcast reducer action = ', action)
   switch (action.type) {
     case SET_CLOUDCAST_ID:
@@ -12,4 +12,4 @@ export const cloudcastReducer = (state = initialState, action) => {
   }
 }
 
-export default cloudcastReducer
+export default cloudcastIdReducer

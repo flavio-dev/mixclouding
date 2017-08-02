@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux-immutable'
 import appReducer from 'app/reducers'
-import cloudcastReducer from 'routes/cloudcast/reducers'
+import cloudcastReducers from 'routes/cloudcast/reducers/index'
 
 export const makeRootReducer = (asyncReducers) => {
   return combineReducers({
     appReducer,
-    cloudcastReducer,
+    cloudcastReducers,
     ...asyncReducers
   })
 }

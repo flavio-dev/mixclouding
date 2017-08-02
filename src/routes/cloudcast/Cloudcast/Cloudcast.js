@@ -3,11 +3,14 @@ import PropTypes from 'prop-types'
 
 class Cloudcast extends Component {
   componentWillMount() {
-    this.props.setCloudcastId(this.props.match.params.cloudcastId)
+    this.props.setCloudcastId('/' +
+      this.props.match.params.cloudcastArtist + '/' +
+      this.props.match.params.cloudcastKey
+    )
   }
 
   render() {
-    return <div>hello {this.props.match.params.cloudcastId} {this.props.test}</div>
+    return <div>hello {this.props.match.params.cloudcastArtist} {this.props.test}</div>
   }
 }
 
