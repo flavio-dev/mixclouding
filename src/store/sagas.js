@@ -1,14 +1,14 @@
 import createSagaMiddleware from 'redux-saga'
 import { call } from 'redux-saga/effects'
 
-import { watchSetCloudcastId } from 'routes/cloudcast/sagas'
+import watchCloudcasts from 'routes/cloudcast/sagas/index'
 
 export const sagaMiddleware = createSagaMiddleware()
 // let dynamicSagaIds = {}
 
 export function* rootSaga() {
   console.log('into the rootSaga')
-  yield call(watchSetCloudcastId)
+  yield call(watchCloudcasts)
 }
 
 // export const injectSaga = (sagaId, saga, ...args) => {

@@ -11,7 +11,7 @@ export const Root = ({ store }) => (
     <Router>
       <Switch>
         <Route exact path='/' component={App} />
-        <Route path='/:cloudcastArtist/:cloudcastKey' component={CloudcastContainer} />
+        <Route path='/:cloudcastId' component={CloudcastContainer} />
       </Switch>
     </Router>
   </Provider>

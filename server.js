@@ -69,9 +69,10 @@ wsServer.on('request', function(request) {
 
 		if (message.type === 'utf8') {
 			console.log((new Date()) + ' Received Parameters: '+ message.utf8Data);
+			console.log('clients = ', clients)
 
 			// broadcast message to all connected clients
-			// var json = JSON.stringify({ type:'message', data: obj });
+			// var json = JSON.stringify({ type: 'message', data: obj });
 			for (var i=0; i < clients.length; i++) {
 				clients[i].sendUTF(message.utf8Data);
 			}

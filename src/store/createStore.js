@@ -2,12 +2,13 @@ import Immutable from 'immutable'
 import { applyMiddleware, createStore, compose } from 'redux'
 import { makeRootReducer } from './reducers'
 import { rootSaga, sagaMiddleware } from './sagas'
+import socketMiddleware from './socketMiddleware'
 
 export default (initialState = Immutable.Map(), history) => {
   // ======================================================
   // Middleware Configuration
   // ======================================================
-  const middleware = [sagaMiddleware]
+  const middleware = [sagaMiddleware, socketMiddleware]
 
   // ======================================================
   // Store Instantiation and HMR Setup
