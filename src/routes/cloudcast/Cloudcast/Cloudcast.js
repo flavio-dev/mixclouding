@@ -8,6 +8,9 @@ class Cloudcast extends Component {
     super(props)
     this.id = ''
     console.log('this.props.messages = ', this.props.messages)
+    this.state = {
+      messages: this.props.messages
+    }
   }
 
   componentWillMount() {
@@ -19,6 +22,11 @@ class Cloudcast extends Component {
     this.props.setConnection('ws:localhost:4000')
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log('nextProps.messages = ', nextProps.messages)
+    this.setState({messages: nextProps.messages})
+  }
+
   sendMessage = () => {
     this.props.sendMessage('the message', this.id, MESSAGE_TO_ALL)
   }
@@ -28,7 +36,7 @@ class Cloudcast extends Component {
       <div>
         <span>hello {this.props.match.params.cloudcastId}</span>
         <h1>FORUM</h1>
-        {this.props.messages.map((message, index) => {
+        {this.state.messages.map((message, index) => {
           return (
             <div key={index}>
               <span>FROM: {message.from}</span>

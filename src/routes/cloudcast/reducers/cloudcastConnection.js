@@ -13,8 +13,8 @@ export const cloudcastConnectionReducer = (state = initialState, action) => {
       return state
     case MESSAGE_RECEIVED_FOR_ALL:
       console.log('action = ', action)
-      state.push(action.message)
-      return state
+      const bla = [action.message]
+      return state.concat(bla)
     default:
       return state
   }
