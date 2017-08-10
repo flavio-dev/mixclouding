@@ -2,9 +2,10 @@ import {
   // connected,
   connecting,
   disconnected,
-  // messageReceived,
+  messageReceivedForAll,
   SET_CONNECTION,
-  SEND_CHAT_MESSAGE
+  SEND_CHAT_MESSAGE,
+  MESSAGE_TO_ALL
 } from './actions'
 
 const socketMiddleware = (function() {
@@ -26,15 +27,15 @@ const socketMiddleware = (function() {
     // Parse the JSON message received on the websocket
     var msg = JSON.parse(evt.data)
     console.log('receiving in the middleware the msg that is  = ', msg)
-    // switch (msg.type) {
-    //   case 'CHAT_MESSAGE':
-    //     // Dispatch an action that adds the received message to our state
-    //     store.dispatch(messageReceived(msg))
-    //     break
-    //   default:
-    //     console.log('Received unknown message type: ' + msg.type)
-    //     break
-    // }
+    switch (msg.to) {
+      case MESSAGE_TO_ALL:
+        // Dispatch an action that adds the received message to our state
+        store.dispatch(messageReceivedForAll(msg))
+        break
+      default:
+        console.log('Received unknown message type: ' + msg.type)
+        break
+    }
   }
 
   return store => next => action => {
@@ -67,7 +68,7 @@ const socketMiddleware = (function() {
 
       // Send the 'SEND_MESSAGE' action down the websocket to the server
       case SEND_CHAT_MESSAGE:
-        console.log('action.message = ', action.message)
+        console.log('sending action = ', action)
         socket.send(JSON.stringify(action))
         return true
 

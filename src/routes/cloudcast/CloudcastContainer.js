@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 
 import Cloudcast from './Cloudcast'
 import { setCloudcastId } from './actions'
+import { getMessages } from './selectors'
 import { setConnection, sendMessage } from 'store/actions'
 
 const mapActionCreators = (dispatch) => ({
@@ -11,13 +12,13 @@ const mapActionCreators = (dispatch) => ({
   setConnection: (url) => {
     dispatch(setConnection(url))
   },
-  sendMessage: (message) => {
-    dispatch(sendMessage(message))
+  sendMessage: (message, from, to) => {
+    dispatch(sendMessage(message, from, to))
   }
 })
 
 const mapStateToProps = (state) => ({
-  test: 'testcdscjos'
+  messages: getMessages(state)
 })
 
 export default connect(mapStateToProps, mapActionCreators)(Cloudcast)

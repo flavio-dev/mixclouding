@@ -4,6 +4,8 @@ export const CONNECTED = 'CONNECTED'
 export const MESSAGE_RECEIVED = 'MESSAGE_RECEIVED'
 export const SET_CONNECTION = 'SET_CONNECTION'
 export const SEND_CHAT_MESSAGE = 'SEND_CHAT_MESSAGE'
+export const MESSAGE_TO_ALL = 'MESSAGE_TO_ALL'
+export const MESSAGE_RECEIVED_FOR_ALL = 'MESSAGE_RECEIVED_FOR_ALL'
 
 export const connected = () => ({
   type: CONNECTED,
@@ -20,23 +22,23 @@ export const disconnected = () => ({
   status: 'disconnected'
 })
 
-export const messageReceived = (msg) => ({
-  type: MESSAGE_RECEIVED,
+export const messageReceivedForAll = (msg) => ({
+  type: MESSAGE_RECEIVED_FOR_ALL,
   message: msg
 })
 
 export const setConnection = (url) => {
-  console.log('store action setConnection = ', url)
   return {
     type: SET_CONNECTION,
     url
   }
 }
 
-export const sendMessage = (message) => {
-  console.log('store action setConnection = ', message)
+export const sendMessage = (message, from, to) => {
   return {
     type: SEND_CHAT_MESSAGE,
-    message
+    message,
+    from,
+    to
   }
 }
