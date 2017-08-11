@@ -9,6 +9,7 @@ var webSocketsServerPort = Number(process.env.PORT || 4000);
 // websocket and http servers
 var webSocketServer = require('websocket').server;
 var http = require('http');
+var https = require('https');
 var fs = require('fs');
 
 // list of currently connected clients (users)
@@ -22,16 +23,53 @@ var server = http.createServer(function(request, response) {
 	// to do: how to pass the port to the other js files
 
 	if (request.url === '/test/') {
-	  response.writeHead(200, {
-		  'Content-Type': 'application/json',
-		  'Access-Control-Allow-Origin': '*',
-  		  'Access-Control-Allow-Methods': 'GET, OPTIONS',
-          'Access-Control-Allow-Headers': 'Content-Type'
-	  });
-	  response.write(JSON.stringify({
-		  responseJson: 'blabla'
-	  }));
-	  response.end();
+
+		var options = {
+		    host: 'www.mixcloud.com',
+		    path: '/player/details/?key=/NetilRadio/extra-sunday-mermaids-marcy-takeover/'
+		};
+
+		console.log("Shit will go DOWN!");
+
+		var req = https.get(options, function(res)
+    {
+			console.log("Oh YEAH!");
+			var output = '';
+			res.on('data', function (chunk) {
+        output += chunk;
+      });
+
+			res.on('end', function() {
+	        var obj = JSON.parse(output);
+					console.log(obj);
+					response.writeHead(200, {
+					  'Content-Type': 'application/json',
+					  'Access-Control-Allow-Origin': '*',
+					  'Access-Control-Allow-Methods': 'GET, OPTIONS',
+			      'Access-Control-Allow-Headers': 'Content-Type'
+				  });
+					response.write(output);
+				  response.end();
+	    });
+
+			console.log('do we end here?');
+
+			req.end();
+
+			console.log('MOFO output = ', output);
+		});
+
+
+	//   response.writeHead(200, {
+	// 	  'Content-Type': 'application/json',
+	// 	  'Access-Control-Allow-Origin': '*',
+	// 	  'Access-Control-Allow-Methods': 'GET, OPTIONS',
+  //     'Access-Control-Allow-Headers': 'Content-Type'
+	//   });
+	//   response.write(JSON.stringify({
+	// 	  responseJson: 'blabla'
+	//   }));
+	//   response.end();
 	}
 });
 

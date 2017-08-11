@@ -7,7 +7,7 @@ import logo from './logo.svg'
 import styles from './App.css'
 
 class App extends Component {
-  // componentDidMount() {
+  componentDidMount() {
   //   // this is an "echo" websocket service for testing pusposes
   //   // const host = window.location.host
   //   // const protocol = (window.location.protocol === 'https:') ? 'wss:' : 'ws:'
@@ -26,12 +26,12 @@ class App extends Component {
   //     }))
   //   }, 2000)
   //
-  //   whatwgFetch('http://localhost:4000/test/').then(function(response) {
-  //     return response.text()
-  //   }).then(function(body) {
-  //     console.log(JSON.parse(body))
-  //   })
-  // }
+    whatwgFetch('http://localhost:4000/test/').then(function(response) {
+      return response.text()
+    }).then(function(body) {
+      console.log(JSON.parse(body))
+    })
+  }
 
   handleData(data) {
     let result = JSON.parse(data)
