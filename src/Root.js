@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
-import App from 'routes/App'
+import App from 'routes/app'
 import CloudcastContainer from 'routes/cloudcast/CloudcastContainer'
 
 export const Root = ({ store }) => (

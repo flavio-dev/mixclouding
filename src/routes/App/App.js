@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   handleData(data) {
-    let result = JSON.parse(data)
+    // let result = JSON.parse(data)
     // console.log('data returned is ', result)
   }
 

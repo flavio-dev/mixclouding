@@ -13,7 +13,7 @@ var https = require('https');
 var fs = require('fs');
 
 // list of currently connected clients (users)
-var clients = [ ];
+var clients = [];
 
 /**
  * HTTP server
@@ -29,11 +29,8 @@ var server = http.createServer(function(request, response) {
 		    path: '/player/details/?key=/NetilRadio/extra-sunday-mermaids-marcy-takeover/'
 		};
 
-		console.log("Shit will go DOWN!");
-
 		var req = https.get(options, function(res)
     {
-			console.log("Oh YEAH!");
 			var output = '';
 			res.on('data', function (chunk) {
         output += chunk;
@@ -41,7 +38,6 @@ var server = http.createServer(function(request, response) {
 
 			res.on('end', function() {
 	        var obj = JSON.parse(output);
-					console.log(obj);
 					response.writeHead(200, {
 					  'Content-Type': 'application/json',
 					  'Access-Control-Allow-Origin': '*',
@@ -51,13 +47,19 @@ var server = http.createServer(function(request, response) {
 					response.write(output);
 				  response.end();
 	    });
-
-			console.log('do we end here?');
-
 			req.end();
-
-			console.log('MOFO output = ', output);
 		});
+
+		if (request.url === '/users/') {
+			response.writeHead(200, {
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Methods': 'GET, OPTIONS',
+				'Access-Control-Allow-Headers': 'Content-Type'
+			});
+			response.write(clients);
+			response.end();
+		}
 
 
 	//   response.writeHead(200, {
