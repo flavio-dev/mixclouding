@@ -50,18 +50,6 @@ var server = http.createServer(function(request, response) {
 			req.end();
 		});
 
-		if (request.url === '/users/') {
-			response.writeHead(200, {
-				'Content-Type': 'application/json',
-				'Access-Control-Allow-Origin': '*',
-				'Access-Control-Allow-Methods': 'GET, OPTIONS',
-				'Access-Control-Allow-Headers': 'Content-Type'
-			});
-			response.write(clients);
-			response.end();
-		}
-
-
 	//   response.writeHead(200, {
 	// 	  'Content-Type': 'application/json',
 	// 	  'Access-Control-Allow-Origin': '*',
@@ -73,6 +61,18 @@ var server = http.createServer(function(request, response) {
 	//   }));
 	//   response.end();
 	}
+
+  if (request.url === '/users/') {
+    console.log('WE HIT THE HTTP ENDPOINT USERS');
+    response.writeHead(200, {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type'
+    });
+    response.write(JSON.stringify(clients));
+    response.end();
+  }
 });
 
 server.listen(webSocketsServerPort, function() {

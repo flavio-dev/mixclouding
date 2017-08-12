@@ -13,7 +13,8 @@ const checkStatus = (response) => {
 
 export const whatwgFetch = (url, options) => {
   return fetch(url, options)
-    .then(checkStatus)
+    .then(response => checkStatus(response).text())
+    .then(body => JSON.parse(body))
 }
 
 export default whatwgFetch
