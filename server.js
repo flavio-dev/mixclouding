@@ -14,6 +14,8 @@ var fs = require('fs');
 
 // list of currently connected clients (users)
 var clients = [];
+var userConnectionMap = {};
+var users = [];
 
 /**
  * HTTP server
@@ -70,7 +72,7 @@ var server = http.createServer(function(request, response) {
       'Access-Control-Allow-Methods': 'GET, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type'
     });
-    response.write(JSON.stringify(clients));
+    response.write(JSON.stringify(users));
     response.end();
   }
 });
@@ -100,7 +102,7 @@ wsServer.on('request', function(request) {
 	// we need to know client index to remove them on 'close' event
 	var index = clients.push(connection) - 1;
 
-	console.log((new Date()) + ' Connection accepted.');
+	console.log((new Date()) + ' Connection accepted. at index ' + index);
 
 	// user sent some message
 	connection.on('message', function(message) {
@@ -109,7 +111,12 @@ wsServer.on('request', function(request) {
 
 		if (message.type === 'utf8') {
 			console.log((new Date()) + ' Received Parameters: '+ message.utf8Data);
-			console.log('clients = ', clients)
+			console.log('message.utf8Data = ', message.utf8Data)
+          var msgJSON = JSON.parse(message.utf8Data)
+          if (msgJSON.username && msgJSON.username.length) {
+            userConnectionMap[msgJSON.username] = connection
+            users.push(msgJSON.username)
+          }
 
 			// broadcast message to all connected clients
 			// var json = JSON.stringify({ type: 'message', data: obj });
@@ -120,11 +127,16 @@ wsServer.on('request', function(request) {
 	});
 
 	// user disconnected
-	connection.on('close', function(connection) {
+	connection.on('close', function(connection, user) {
+    console.log('user passed = ', user);
 		console.log((new Date()) + " Peer "
 			+ connection.remoteAddress + " disconnected.");
 		// remove user from the list of connected clients
 		clients.splice(index, 1);
+
+    // for (var i=0; i < users.length; i++) {
+    //
+    // }
 	});
 
 });

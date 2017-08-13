@@ -51,6 +51,11 @@ const socketMiddleware = (function() {
 
         // Attempt to connect (we could send a 'failed' action on error)
         socket = new WebSocket(action.url)
+        console.log('action = ', action)
+        socket.onopen = () => {
+          console.log('onopen trigger, sending action.id = ', action.id)
+          socket.send(JSON.stringify({username: action.id}))
+        }
         socket.onmessage = onMessage(socket, store)
 
         return true
@@ -58,7 +63,8 @@ const socketMiddleware = (function() {
       // The user wants us to disconnect
       case 'DISCONNECT':
         if (socket !== null) {
-          socket.close()
+          socket.close(1000, 'username')
+          // socket.close()
         }
         socket = null
 

@@ -19,7 +19,7 @@ class Cloudcast extends Component {
   }
 
   componentDidMount() {
-    this.props.setConnection('ws:localhost:4000')
+    this.props.setConnection('ws:localhost:4000', this.id)
   }
 
   componentWillReceiveProps(nextProps) {

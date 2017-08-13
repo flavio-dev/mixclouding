@@ -9,8 +9,8 @@ const mapActionCreators = (dispatch) => ({
   setCloudcastId: (ccId) => {
     dispatch(setCloudcastId(ccId))
   },
-  setConnection: (url) => {
-    dispatch(setConnection(url))
+  setConnection: (url, id) => {
+    dispatch(setConnection(url, id))
   },
   sendMessage: (message, from, to) => {
     dispatch(sendMessage(message, from, to))

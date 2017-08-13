@@ -27,10 +27,11 @@ export const messageReceivedForAll = (msg) => ({
   message: msg
 })
 
-export const setConnection = (url) => {
+export const setConnection = (url, id) => {
   return {
     type: SET_CONNECTION,
-    url
+    url,
+    id
   }
 }
 
